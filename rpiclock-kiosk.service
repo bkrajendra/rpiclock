@@ -4,7 +4,7 @@ After=rpiclock.service
 Requires=rpiclock.service
 
 [Service]
-Environment=XAUTHORITY=/home/pi/.Xauthority
+Environment=XAUTHORITY=/home/rajendra/.Xauthority
 Environment=DISPLAY=:0
 ExecStart=/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk http://localhost:8080
 Restart=always

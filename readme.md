@@ -69,25 +69,45 @@ This project turns a Raspberry Pi connected to an HDMI display into a simple alw
     WantedBy=multi-user.target
 
     ```
-    Enable service
+
+   Auto start chromium: add service /etc/systemd/system/rpiclock-kiosk.service
+
+   ```sudo nano /etc/systemd/system/rpiclock-kiosk.service```
+   
+    ```
+    [Unit]
+    Description=Chromium Kiosk for RPIClock Display
+    After=rpiclock.service
+    Requires=rpiclock.service
+
+    [Service]
+    Environment=XAUTHORITY=/home/pi/.Xauthority
+    Environment=DISPLAY=:0
+    ExecStart=/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk http://localhost:8080
+    Restart=always
+    User=pi
+
+    [Install]
+    WantedBy=graphical.target
+
+
+    ```
+    Update services
+
     ```
     sudo systemctl daemon-reload
+
+    # Enable both
     sudo systemctl enable rpiclock.service
+    sudo systemctl enable rpiclock-kiosk.service
+
+    # Start both now
     sudo systemctl start rpiclock.service
+    sudo systemctl start rpiclock-kiosk.service
+
+    # Status check
     sudo systemctl status rpiclock.service
-
-    ```
-
-   Auto start chromium
-    ```
-    nano ~/.config/lxsession/LXDE-pi/autostart
-
-    ```
-    Add Following at the end
-
-    ```
-    @chromium-browser --noerrdialogs --disable-infobars --kiosk http://localhost:8080
-
+    sudo systemctl status rpiclock-kiosk.service
 
     ```
 

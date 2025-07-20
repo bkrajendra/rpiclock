@@ -1,6 +1,6 @@
 [Unit]
-  Description=Simple Python HTTP Server for RPIClock Display
-  After=network.target
+Description=Simple Python HTTP Server for RPIClock Display
+After=network.target
 
 [Service]
 WorkingDirectory=/home/rajendra/rpiclock
