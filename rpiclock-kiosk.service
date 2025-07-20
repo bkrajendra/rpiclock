@@ -1,0 +1,14 @@
+[Unit]
+Description=Chromium Kiosk for RPIClock Display
+After=rpiclock.service
+Requires=rpiclock.service
+
+[Service]
+Environment=XAUTHORITY=/home/pi/.Xauthority
+Environment=DISPLAY=:0
+ExecStart=/usr/bin/chromium-browser --noerrdialogs --disable-infobars --kiosk http://localhost:8080
+Restart=always
+User=rajendra
+
+[Install]
+WantedBy=graphical.target
