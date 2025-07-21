@@ -26,7 +26,7 @@
       gap: 0;
     }
     .time-main {
-      font-size: 200px;
+      font-size: 350px;
       vertical-align: middle;
       display: inline-block;
       line-height: 1;
@@ -39,7 +39,7 @@
       position: absolute;
       left: 100%;
       top: 0;
-      transform: translateX(10px);
+      transform: translateX(20px);
       width: 60px;
       text-align: left;
     }
@@ -49,19 +49,19 @@
       position: absolute;
       left: 100%;
       bottom: 0;
-      transform: translateX(10px);
+      transform: translateX(20px);
       width: 60px;
       text-align: left;
     }
     #weather {
       font-size: 40px;
-      margin-top: 50px;
+      margin-top: 5px;
     }
     #icon {
       width: 100px;
       height: 100px;
       display: block;
-      margin: 20px auto 0;
+      margin: auto 0;
     }
   </style>
 </head>
@@ -74,8 +74,10 @@
       <span class="time-ampm">AM</span>
     </span>
   </div>
-  <div id="weather">Loading weather...</div>
-  <img id="icon" src="" alt="Weather Icon" style="display:none;" />
+  <div style="display: flex; align-items: center; justify-content: center; gap: 5px; margin-top: 5px;">
+    <img id="icon" src="" alt="Weather Icon" style="display:none;" />
+    <div id="weather">Loading weather...</div>
+  </div>
 
   <script>
     let apiKey = '';
